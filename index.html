@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Autoservice Lombardijen | Rotterdam</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #102a43;
+            color: white;
+        }
+
+        /* =========================
+           NAVIGATIE
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+
+            background: rgba(16, 42, 67, 0.97);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            border-bottom: 1px solid #2f5878;
+
+            z-index: 1000;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 52px;
+            height: 52px;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #102a43;
+            font-weight: bold;
+            font-size: 13px;
+
+            border: 3px solid #4da3d9;
+        }
+
+        .brand-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .brand-text span {
+            color: #5bb6e6;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #5bb6e6;
+        }
+
+        /* =========================
+           TAALKEUZE
+        ========================= */
+
+        .language {
+            margin-left: 20px;
+        }
+
+        .language select {
+            background: #173b5c;
+            color: white;
+
+            border: 1px solid #4da3d9;
+
+            padding: 9px 12px;
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 140px 7% 80px;
+
+            background:
+                linear-gradient(
+                    rgba(16, 42, 67, 0.85),
+                    rgba(16, 42, 67, 0.92)
+                ),
+                url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=2000&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero small {
+            color: #5bb6e6;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 85px);
+            line-height: 1.05;
+
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: #5bb6e6;
+        }
+
+        .hero p {
+            color: #d8e7f2;
+
+            font-size: 19px;
+
+            max-width: 700px;
+
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 15px 25px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .button-blue {
+            background: #3f9bd3;
+            color: white;
+        }
+
+        .button-blue:hover {
+            background: #5bb6e6;
+            transform: translateY(-3px);
+        }
+
+        .button-outline {
+            border: 2px solid #ffffff;
+            color: white;
+        }
+
+        .button-outline:hover {
+            background: white;
+            color: #102a43;
+        }
+
+        .button-tiktok {
+            background: #000000;
+            color: white;
+        }
+
+        .button-tiktok:hover {
+            background: #222222;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           SECTIES
+        ========================= */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title small {
+            color: #5bb6e6;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            color: #c5d7e5;
+
+            max-width: 700px;
+
+            margin: 15px auto;
+        }
+
+        /* =========================
+           DIENSTEN
+        ========================= */
+
+        .services {
+            background: #173b5c;
+        }
+
+        .service-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .service {
+            background: #204b6d;
+
+            padding: 35px;
+
+            border-radius: 10px;
+
+            border: 1px solid #386b8e;
+
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-8px);
+
+            border-color: #5bb6e6;
+        }
+
+        .service-icon {
+            font-size: 40px;
+
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            font-size: 23px;
+
+            margin-bottom: 10px;
+        }
+
+        .service p {
+            color: #d1e1ec;
+        }
+
+        /* =========================
+           3 LIFTEN
+        ========================= */
+
+        .lifts {
+            background: #102a43;
+
+            text-align: center;
+        }
+
+        .lift-box {
+            max-width: 900px;
+
+            margin: auto;
+
+            background: #173b5c;
+
+            padding: 50px;
+
+            border-radius: 15px;
+
+            border: 1px solid #386b8e;
+        }
+
+        .lift-number {
+            font-size: 70px;
+
+            font-weight: bold;
+
+            color: #5bb6e6;
+        }
+
+        .lift-box h3 {
+            font-size: 30px;
+
+            margin-bottom: 15px;
+        }
+
+        .lift-box p {
+            color: #d1e1ec;
+
+            font-size: 18px;
+        }
+
+        /* =========================
+           KWALITEIT
+        ========================= */
+
+        .quality {
+            background: #173b5c;
+        }
+
+        .quality-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .quality-card {
+            background: #204b6d;
+
+            padding: 35px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            border: 1px solid #386b8e;
+        }
+
+        .quality-card .icon {
+            font-size: 45px;
+
+            margin-bottom: 15px;
+        }
+
+        .quality-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .quality-card p {
+            color: #d1e1ec;
+        }
+
+        /* =========================
+           OVER ONS
+        ========================= */
+
+        .about {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 450px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    rgba(16, 42, 67, 0.2),
+                    rgba(16, 42, 67, 0.3)
+                ),
+                url("https://images.unsplash.com/photo-1632823469850-1c1c1c1c1c1c?auto=format&fit=crop&w=1200&q=80");
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+        .about-text small {
+            color: #5bb6e6;
+
+            font-weight: bold;
+        }
+
+        .about-text h2 {
+            font-size: 45px;
+
+            margin: 12px 0 20px;
+        }
+
+        .about-text p {
+            color: #c5d7e5;
+
+            margin-bottom: 20px;
+        }
+
+        .checks {
+            list-style: none;
+        }
+
+        .checks li {
+            margin: 13px 0;
+
+            font-weight: bold;
+        }
+
+        .checks li::before {
+            content: "✓";
+
+            color: #5bb6e6;
+
+            margin-right: 10px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            background: #173b5c;
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .contact-card {
+            background: #204b6d;
+
+            padding: 35px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            border: 1px solid #386b8e;
+        }
+
+        .contact-card .icon {
+            font-size: 40px;
+
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: #d1e1ec;
+        }
+
+        .contact-card a {
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .contact-card a:hover {
+            color: #5bb6e6;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            text-align: center;
+
+            background: #3f9bd3;
+        }
+
+        .cta h2 {
+            font-size: 45px;
+
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 30px;
+        }
+
+        .cta .button {
+            background: white;
+
+            color: #102a43;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0b1f31;
+
+            padding: 35px 7%;
+
+            text-align: center;
+
+            color: #9db5c7;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* =========================
+           MOBIELE KNOPPEN
+        ========================= */
+
+        .mobile-contact {
+            display: none;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .service-grid,
+            .quality-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                height: 70px;
+            }
+
+            .brand-text {
+                font-size: 14px;
+            }
+
+            .logo {
+                width: 45px;
+                height: 45px;
+            }
+
+            .language {
+                margin-left: 5px;
+            }
+
+            .language select {
+                padding: 7px;
+            }
+
+            section {
+                padding: 75px 5%;
+            }
+
+            .hero {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .service-grid,
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+
+            .about-text h2 {
+                font-size: 35px;
+            }
+
+            .mobile-contact {
+                position: fixed;
+
+                bottom: 0;
+                left: 0;
+
+                width: 100%;
+
+                display: grid;
+
+                grid-template-columns: 1fr 1fr;
+
+                z-index: 2000;
+            }
+
+            .mobile-contact a {
+                padding: 17px;
+
+                text-align: center;
+
+                text-decoration: none;
+
+                color: white;
+
+                font-weight: bold;
+            }
+
+            .mobile-whatsapp {
+                background: #128c7e;
+            }
+
+            .mobile-call {
+                background: #3f9bd3;
+            }
+
+            footer {
+                padding-bottom: 85px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATIE
+    ========================= -->
+
+    <nav>
+
+        <div class="brand">
+
+            <!--
+            HIER KOMT LATER HET ECHTE LOGO
+            VAN DE TIKTOK-PROFIELSFOTO
+            -->
+
+            <div class="logo">
+                ASL
+            </div>
+
+            <div class="brand-text">
+                AUTOSERVICE <span>LOMBARDIJEN</span>
+            </div>
+
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#diensten">Diensten</a>
+            </li>
+
+            <li>
+                <a href="#kwaliteit">Kwaliteit</a>
+            </li>
+
+            <li>
+                <a href="#over-ons">Over ons</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+
+        <!-- TAALKEUZE -->
+
+        <div class="language">
+
+            <select onchange="changeLanguage(this.value)">
+
+                <option value="nl">
+                    🇳🇱 Nederlands
+                </option>
+
+                <option value="en">
+                    🇬🇧 English
+                </option>
+
+                <option value="tr">
+                    🇹🇷 Türkçe
+                </option>
+
+                <option value="ku">
+                    🟡 Kurdî
+                </option>
+
+            </select>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <small id="hero-small">
+                Autoservice in Rotterdam
+            </small>
+
+            <h1 id="hero-title">
+                Uw auto.<br>
+                Onze <span>service.</span>
+            </h1>
+
+            <p id="hero-text">
+
+                Professionele autoservice in Rotterdam.
+                Voor onderhoud, reparatie, APK en meer.
+                Neem eenvoudig contact met ons op.
+
+            </p>
+
+
+            <div class="buttons">
+
+                <!-- WHATSAPP -->
+
+                <a
+                    class="button button-blue"
+                    href="https://wa.me/31629094763"
+                    target="_blank">
+
+                    💬 WhatsApp
+
+                </a>
+
+
+                <!-- TELEFOON -->
+
+                <a
+                    class="button button-outline"
+                    href="tel:+31107853401">
+
+                    📞 Bel direct
+
+                </a>
+
+
+                <!-- TIKTOK -->
+
+                <a
+                    class="button button-tiktok"
+                    href="https://www.tiktok.com/@autoservicelombardijen"
+                    target="_blank">
+
+                    🎵 TikTok
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DIENSTEN
+    ========================= -->
+
+    <section class="services" id="diensten">
+
+        <div class="section-title">
+
+            <small>Onze diensten</small>
+
+            <h2>Alles voor uw auto</h2>
+
+            <p>
+                Heeft u onderhoud of reparatie nodig?
+                Neem contact op met Autoservice Lombardijen.
+            </p>
+
+        </div>
+
+
+        <div class="service-grid">
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🔧
+                </div>
+
+                <h3>Onderhoud</h3>
+
+                <p>
+                    Professioneel onderhoud om uw auto
+                    betrouwbaar en veilig te houden.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🚗
+                </div>
+
+                <h3>Reparatie</h3>
+
+                <p>
+                    Voor verschillende reparaties aan
+                    uw auto kunt u bij ons terecht.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    ✅
+                </div>
+
+                <h3>APK</h3>
+
+                <p>
+                    Laat uw auto controleren en zorg
+                    dat deze veilig de weg op kan.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🛞
+                </div>
+
+                <h3>Bandenservice</h3>
+
+                <p>
+                    Voor bandenservice en bandenwissel.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🔍
+                </div>
+
+                <h3>Diagnose</h3>
+
+                <p>
+                    Problemen of storingen aan uw auto?
+                    Neem contact met ons op.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🛠️
+                </div>
+
+                <h3>Autoservice</h3>
+
+                <p>
+                    Persoonlijke service en professioneel
+                    advies voor uw auto.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         3 LIFTEN
+    ========================= -->
+
+    <section class="lifts">
+
+        <div class="lift-box">
+
+            <div class="lift-number">
+                3
+            </div>
+
+            <h3>
+                Professionele hefbruggen
+            </h3>
+
+            <p>
+                Onze garage beschikt over drie hefbruggen,
+                zodat werkzaamheden efficiënt en professioneel
+                kunnen worden uitgevoerd.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KWALITEIT
+    ========================= -->
+
+    <section class="quality" id="kwaliteit">
+
+        <div class="section-title">
+
+            <small>
+                Onze standaard
+            </small>
+
+            <h2>
+                Kwaliteit staat voorop
+            </h2>
+
+            <p>
+                Wij streven naar professionele service,
+                kwalitatieve onderdelen en zorgvuldig werk.
+            </p>
+
+        </div>
+
+
+        <div class="quality-grid">
+
+            <div class="quality-card">
+
+                <div class="icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    Topkwaliteit onderdelen
+                </h3>
+
+                <p>
+                    Wij streven naar kwalitatieve onderdelen
+                    die passen bij het voertuig en de werkzaamheden.
+                </p>
+
+            </div>
+
+
+            <div class="quality-card">
+
+                <div class="icon">
+                    🛠️
+                </div>
+
+                <h3>
+                    Professionele service
+                </h3>
+
+                <p>
+                    Zorgvuldige werkzaamheden en persoonlijk
+                    contact met onze klanten.
+                </p>
+
+            </div>
+
+
+            <div class="quality-card">
+
+                <div class="icon">
+                    🤝
+                </div>
+
+                <h3>
+                    Persoonlijk advies
+                </h3>
+
+                <p>
+                    Heeft u een vraag? Neem contact met ons op
+                    en bespreek uw situatie met ons.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OVER ONS
+    ========================= -->
+
+    <section id="over-ons">
+
+        <div class="about">
+
+            <div class="about-image"></div>
+
+
+            <div class="about-text">
+
+                <small>
+                    Autoservice Lombardijen
+                </small>
+
+                <h2>
+                    Uw auto in goede handen.
+                </h2>
+
+                <p>
+                    Autoservice Lombardijen is gevestigd
+                    in Rotterdam en richt zich op onderhoud,
+                    reparatie en autoservice.
+                </p>
+
+                <p>
+                    Heeft u een vraag over uw auto?
+                    Neem eenvoudig contact met ons op
+                    via WhatsApp of telefoon.
+                </p>
+
+
+                <ul class="checks">
+
+                    <li>
+                        Professionele autoservice
+                    </li>
+
+                    <li>
+                        3 hefbruggen
+                    </li>
+
+                    <li>
+                        Kwalitatieve onderdelen
+                    </li>
+
+                    <li>
+                        Persoonlijke service
+                    </li>
+
+                    <li>
+                        Meertalig contact
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="cta">
+
+        <h2>
+            Heeft u een vraag?
+        </h2>
+
+        <p>
+            Stuur ons direct een WhatsApp-bericht
+            of bel ons.
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                class="button"
+                href="https://wa.me/31629094763"
+                target="_blank">
+
+                💬 WhatsApp
+
+            </a>
+
+
+            <a
+                class="button"
+                href="tel:+31107853401">
+
+                📞 010 785 3401
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+
+            <small>
+                Contact
+            </small>
+
+            <h2>
+                Neem contact met ons op
+            </h2>
+
+            <p>
+                Heeft u een vraag of wilt u meer informatie?
+                Wij helpen u graag verder.
+            </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <div class="contact-card">
+
+                <div class="icon">
+                    📞
+                </div>
+
+                <h3>
+                    Telefoon
+                </h3>
+
+                <p>
+
+                    <a href="tel:+31107853401">
+                        010 785 3401
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="icon">
+                    💬
+                </div>
+
+                <h3>
+                    WhatsApp
+                </h3>
+
+                <p>
+
+                    <a
+                        href="https://wa.me/31629094763"
+                        target="_blank">
+
+                        06 29094763
+
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="icon">
+                    📍
+                </div>
+
+                <h3>
+                    Adres
+                </h3>
+
+                <p>
+                    Ridderkerkstraat 45<br>
+                    3076 JT Rotterdam
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+
+            © 2026
+            <strong>
+                Autoservice Lombardijen
+            </strong>
+
+            — Rotterdam
+
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         MOBIELE CONTACTKNOPPEN
+    ========================= -->
+
+    <div class="mobile-contact">
+
+        <a
+            class="mobile-whatsapp"
+            href="https://wa.me/31629094763"
+            target="_blank">
+
+            💬 WhatsApp
+
+        </a>
+
+
+        <a
+            class="mobile-call"
+            href="tel:+31107853401">
+
+            📞 Bellen
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         TAAL SCRIPT
+    ========================= -->
+
+    <script>
+
+        function changeLanguage(language) {
+
+            const title =
+                document.getElementById("hero-title");
+
+            const text =
+                document.getElementById("hero-text");
+
+            const small =
+                document.getElementById("hero-small");
+
+
+            if (language === "nl") {
+
+                small.innerText =
+                    "Autoservice in Rotterdam";
+
+                title.innerHTML =
+                    "Uw auto.<br>Onze <span>service.</span>";
+
+                text.innerText =
+                    "Professionele autoservice in Rotterdam. Voor onderhoud, reparatie, APK en meer. Neem eenvoudig contact met ons op.";
+            }
+
+
+            if (language === "en") {
+
+                small.innerText =
+                    "Car service in Rotterdam";
+
+                title.innerHTML =
+                    "Your car.<br>Our <span>service.</span>";
+
+                text.innerText =
+                    "Professional car service in Rotterdam. For maintenance, repairs, MOT and more. Contact us easily.";
+            }
+
+
+            if (language === "tr") {
+
+                small.innerText =
+                    "Rotterdam'da oto servis";
+
+                title.innerHTML =
+                    "Aracınız.<br>Bizim <span>hizmetimiz.</span>";
+
+                text.innerText =
+                    "Rotterdam'da profesyonel oto servis. Bakım, onarım, APK ve daha fazlası için bizimle iletişime geçebilirsiniz.";
+            }
+
+
+            if (language === "ku") {
+
+                small.innerText =
+                    "Servîsa otomobîlê li Rotterdam";
+
+                title.innerHTML =
+                    "Otomobîla we.<br>Servîsa <span>me.</span>";
+
+                text.innerText =
+                    "Servîsa profesyonel a otomobîlan li Rotterdam. Ji bo bakım, tamîr û servîsa otomobîlê bi me re têkilî daynin.";
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
